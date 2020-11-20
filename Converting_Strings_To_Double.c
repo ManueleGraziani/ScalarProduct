@@ -1,34 +1,27 @@
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
-#include"ScalarProduct.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "ScalarProduct.h"
 
-void  Converting_Strings_To_Double(char **Vector1, char **Vector2, const unsigned short int *VectorSize)
+
+
+void Converting_Strings_To_Double(char *Vector, double *VectorToD, const unsigned short int VectorSize)
 {	
-	char *v = *Vector1, *endPtr = NULL;
-	int *Vector1ToInt = malloc(*VectorSize);
-	int *Vector2ToInt = malloc(*VectorSize);
+	char *endPtr = NULL;
+	int i = 0;
 
+	if(*Vector == '{')
+		Vector++;
 
-	if(Vector1ToInt == NULL || Vector2ToInt == NULL)
-	{
-		perror("Malloc Error: ");
-		exit(EXIT_FAILURE);
-	}
-
-
-	for(int i = 0; i < *VectorSize; i++)
-	{
-		Vector1ToInt[i]  = strtod(v, &endPtr);
-		printf("valore :%d\n",Vector1ToInt[i]);
+	for(i = 0; i < VectorSize; i++)
+	{	
+		VectorToD[i] = strtod(Vector, &endPtr);
+		printf("valore :%f\n",VectorToD[i]);
 		//		printf("%c",*endPtr);
 
 		while(*endPtr == ' ')
 			endPtr++;
-		v = endPtr + 1;
-
-
+		Vector = endPtr + 1;
 	}
-
 
 }
