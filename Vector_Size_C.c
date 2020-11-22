@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include"ScalarProduct.h"
+#include"SPHeaderFile.h"
+
 
 unsigned short int Vector_Size_C(char *Vector)
 {
@@ -10,7 +11,7 @@ unsigned short int Vector_Size_C(char *Vector)
 	if(strtok(Vector,",") != NULL)
 		VectorSize++;
 	else{
-		printf("Errore, Nessun dato rilevato in input. Riprovare!!");
+		printf("Errore, Nessun dato rilevato in input!!");
 		exit(EXIT_FAILURE);
 	}
 
