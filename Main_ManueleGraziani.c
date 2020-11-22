@@ -11,9 +11,8 @@ int main(int argc,char *argv[])
 	unsigned short int VectorSize = 0;
 
 
-
-	if(argc < 3){
-		printf("la sintassi è %s [VETTORE] [VETTORE]\n",argv[0]);
+	if(argc != 3){
+		printf("Syntax ERROR: la sintassi è %s [n,n,n] [n,n,n]\n",argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -24,7 +23,7 @@ int main(int argc,char *argv[])
 	char *TempVector = malloc(strlen(argv[1])+1);
 	if(TempVector == NULL)
 	{
-		perror("Malloc Error: ");
+		perror("Malloc Error");
 		exit(EXIT_FAILURE);
 	}
 
@@ -37,12 +36,12 @@ int main(int argc,char *argv[])
 	Vector2ToD = malloc(sizeof(double) * VectorSize);
 	if(Vector1ToD == NULL || Vector2ToD == NULL)
 	{
-		perror("Malloc Error: ");
+		perror("Malloc Error");
 		exit(EXIT_FAILURE);
 	} 
 
-	String_To_Double_Array(argv[1], Vector1ToD, VectorSize);
-	String_To_Double_Array(argv[2], Vector2ToD, VectorSize);
+	String_To_Double_Vector(argv[1], Vector1ToD, VectorSize);
+	String_To_Double_Vector(argv[2], Vector2ToD, VectorSize);
 	ScalarProduct = Scalar_Product(Vector1ToD, Vector2ToD, VectorSize);	
 
 	// De allocazioni delle variabili precedentemente allocate con malloc
